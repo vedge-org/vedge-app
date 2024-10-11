@@ -7,17 +7,33 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+   @State private var selectedTab: Tab = .explore
+   
+   init() {
+       UITabBar.appearance().isHidden = true
+   }
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        ZStack(alignment: .bottom) {
+            TabView(selection: $selectedTab) {
+                RecommendedView().tag(Tab.recommended)
+                ExploreView().tag(Tab.explore)
+                TicketListView().tag(Tab.ticket)
+                ProfileView.tag(Tab.profile)
+            }
+            .frame(maxHeight: .infinity)
+                    
+                BottomNavigationBar(selectedTab: $selectedTab)
+                }
     }
 }
+
+
+
+
+
 
 #Preview {
     ContentView()
