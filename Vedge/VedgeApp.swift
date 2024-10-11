@@ -15,3 +15,19 @@ struct VedgeApp: App {
         }
     }
 }
+
+enum Tab: String, CaseIterable {
+    case recommended = "맞춤"
+    case explore = "탐색"
+    case ticket = "티켓"
+    case profile = "프로필"
+
+    var iconName: String {
+        switch self {
+        case .recommended: return "RecommendedIcon"
+        case .explore: return "ExploreIcon"
+        case .ticket: return "TicketIcon"
+        case .profile: return "PersonIcon"
+        }
+    }
+}
