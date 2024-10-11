@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A2ADC92C2CB98C2A0092E93C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A2ADC92B2CB98C250092E93C /* .gitignore */; };
+		A2B92F2C2CB4B26500E6BD12 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A2B92F2B2CB4B26500E6BD12 /* Lottie */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A29D5F0A2CAC12230089E30C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,11 +32,25 @@
 		A29D5EF92CAC12220089E30C /* Vedge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vedge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A29D5F092CAC12230089E30C /* VedgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VedgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A29D5F132CAC12230089E30C /* VedgeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VedgeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2ADC92B2CB98C250092E93C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A2AB36752CACDF15006CB7FA /* Exceptions for "Vedge" folder in "Vedge" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A29D5EF82CAC12220089E30C /* Vedge */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A29D5EFB2CAC12220089E30C /* Vedge */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A2AB36752CACDF15006CB7FA /* Exceptions for "Vedge" folder in "Vedge" target */,
+			);
 			path = Vedge;
 			sourceTree = "<group>";
 		};
@@ -52,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2B92F2C2CB4B26500E6BD12 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,9 +95,11 @@
 		A29D5EF02CAC12220089E30C = {
 			isa = PBXGroup;
 			children = (
+				A2ADC92B2CB98C250092E93C /* .gitignore */,
 				A29D5EFB2CAC12220089E30C /* Vedge */,
 				A29D5F0C2CAC12230089E30C /* VedgeTests */,
 				A29D5F162CAC12230089E30C /* VedgeUITests */,
+				A2B92F2A2CB4B26500E6BD12 /* Frameworks */,
 				A29D5EFA2CAC12220089E30C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +112,13 @@
 				A29D5F132CAC12230089E30C /* VedgeUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A2B92F2A2CB4B26500E6BD12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +141,7 @@
 			);
 			name = Vedge;
 			packageProductDependencies = (
+				A2B92F2B2CB4B26500E6BD12 /* Lottie */,
 			);
 			productName = Vedge;
 			productReference = A29D5EF92CAC12220089E30C /* Vedge.app */;
@@ -195,6 +225,10 @@
 			);
 			mainGroup = A29D5EF02CAC12220089E30C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A219C5C72CAE9D5200D97D0B /* XCRemoteSwiftPackageReference "payment-sdk-ios" */,
+				A230A5DF2CB4B0E6003D0BD6 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A29D5EFA2CAC12220089E30C /* Products */;
 			projectDirPath = "";
@@ -212,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2ADC92C2CB98C2A0092E93C /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,17 +428,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Vedge/Vedge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Vedge/Preview Content\"";
-				DEVELOPMENT_TEAM = 6N4XWB3QSL;
+				DEVELOPMENT_TEAM = TQ7JMJFZ9K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Vedge/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -422,17 +460,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Vedge/Vedge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Vedge/Preview Content\"";
-				DEVELOPMENT_TEAM = 6N4XWB3QSL;
+				DEVELOPMENT_TEAM = TQ7JMJFZ9K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Vedge/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -558,6 +599,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A219C5C72CAE9D5200D97D0B /* XCRemoteSwiftPackageReference "payment-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tosspayments/payment-sdk-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.33;
+			};
+		};
+		A230A5DF2CB4B0E6003D0BD6 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A2B92F2B2CB4B26500E6BD12 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A230A5DF2CB4B0E6003D0BD6 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A29D5EF12CAC12220089E30C /* Project object */;
 }
