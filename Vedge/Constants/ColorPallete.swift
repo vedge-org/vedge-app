@@ -21,4 +21,5 @@ struct Constants {
     static let ContentsStatusUnselected: Color = Color(red: 0.7, green: 0.7, blue: 0.74)
     static let FixedBackgoundWhite: Color = .white
     static let VariableBackgroundComponent: Color = .black.opacity(0.2)
+    static let ContentsDefaultQuaternary: Color = Color(red: 0.59, green: 0.59, blue: 0.63)
 }

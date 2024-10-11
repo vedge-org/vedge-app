@@ -21,12 +21,12 @@ struct ContentView: View {
                 RecommendedView().tag(Tab.recommended)
                 ExploreView().tag(Tab.explore)
                 TicketListView().tag(Tab.ticket)
-                ProfileView.tag(Tab.profile)
+                ProfileView().tag(Tab.profile)
             }
             .frame(maxHeight: .infinity)
-                    
-                BottomNavigationBar(selectedTab: $selectedTab)
-                }
+            
+            BottomNavigationBar(selectedTab: $selectedTab)
+        }
     }
 }
 
