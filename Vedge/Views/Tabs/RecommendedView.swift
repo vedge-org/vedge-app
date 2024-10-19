@@ -22,6 +22,8 @@ struct RecommendedView: View {
             CardInfo(text: "세 번째 카드", color: .green)
         ]
     
+    let eventItmes = ["Sample","Sample2","Sample3","Sample4","Sample5"]
+    
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -62,10 +64,11 @@ struct RecommendedView: View {
                 .frame(height: 400)  // GeometryReader에 명시적인 높이 지정
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    CustomText(text:"공연 장소", style:.headline, accent: true, color:Color.black)
+                    Text("공연 장소")
+                        .typography(.headline, accent: true, color:Color.black)
                     LazyVGrid(columns: columns, spacing: 24) {
-                        ForEach(0..<6) { index in
-                            EventItemView()
+                        ForEach(0..<eventItmes.count, id: \.self) { index in
+                            EventItemView(imageName: eventItmes[index])
                                 .frame(maxWidth: .infinity)
                         }
                     }
@@ -99,9 +102,7 @@ struct CardView: View {
             
             VStack(alignment: .leading, spacing: 8) {  // 텍스트를 세로로 정렬하고 간격 추가
                 Text(cardInfo.text)
-                    .font(Font.custom("Interop-SemiBold", size: 28))
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.leading)  // 텍스트를 왼쪽 정렬
+                    .typography(.title,accent: true,color:Constants.VariableContentsAccent)
             }
             .padding(.horizontal, 20)  // 좌우 패딩 20
             .padding(.vertical, 24)    // 상하 패딩 24
@@ -116,17 +117,18 @@ struct Event {
 }
 
 struct EventItemView: View {
+    let imageName: String
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-              Image("Sample2")
+              Image(imageName)
                 .resizable()
                 .frame(height: 232)
                 .clipped()
                 .cornerRadius(4)
             VStack(alignment: .leading, spacing: 0) {
-                CustomText(text:"콜드플레이 내한공연",style:.body, accent: true ,color:Color.black)
-                CustomText(text:"24. 10. 04 ~ 24. 10. 06",style:.caption, accent: false ,color:Constants.ContentsDefaultQuaternary)
-                CustomText(text:"올림픽공원 올림픽홀",style:.caption, accent: false ,color:Constants.ContentsDefaultQuaternary)
+                Text("콜드플레이 내한공연").typography(.body, accent: true ,color:Color.black)
+                Text("24. 10. 04 ~ 24. 10. 06").typography(.caption, accent: false ,color:Constants.ContentsDefaultQuaternary)
+                Text("올림픽공원 올림픽홀").typography(.caption, accent: false ,color:Constants.ContentsDefaultQuaternary)
             }
         }
     }
