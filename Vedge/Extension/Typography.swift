@@ -1,6 +1,5 @@
 import SwiftUI
 
-// Typography 스타일 정의
 struct Typography {
     enum Style {
         case caption, label, body, headline, title, display
@@ -48,6 +47,7 @@ struct TypographyEnvironmentKey: EnvironmentKey {
     }
 }
 
+
 extension EnvironmentValues {
     var typography: (Typography.Style, Bool, Color) -> Font {
         get { self[TypographyEnvironmentKey.self] }
@@ -55,80 +55,25 @@ extension EnvironmentValues {
     }
 }
 
-// Typography Modifier
+
 struct TypographyModifier: ViewModifier {
     let style: Typography.Style
     let accent: Bool
     let color: Color
-    @Environment(\.typography) private var typography
     
     func body(content: Content) -> some View {
         content
-            .font(typography(style, accent, color))
+            .font(.custom(accent ? "Interop-SemiBold" : "Interop-Medium", size: style.fontSize))
             .foregroundColor(color)
-            .tracking(style.letterSpacing(accent: accent))
-            .lineSpacing(style.lineHeight - style.fontSize) // 줄 간격 설정
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .multilineTextAlignment(.leading)
-            .lineLimit(nil)
+            .lineSpacing((style.lineHeight - style.fontSize)/2)
+            .padding(.vertical, (style.lineHeight - style.fontSize) / 4)
+            .kerning(style.letterSpacing(accent: accent))
+            .fixedSize(horizontal: false, vertical: true)
     }
 }
 
-struct TextStyleModifier: ViewModifier {
-    let style: Typography.Style
-    let accent: Bool
-    let color: Color
-    @Environment(\.typography) private var typography
-    
-    func body(content: Content) -> some View {
-        content
-            .font(typography(style, accent, color))
-            .foregroundColor(color)
-            .tracking(style.letterSpacing(accent: accent))
-            .lineSpacing(style.lineHeight - style.fontSize) // 줄 간격 설정
-            .lineLimit(nil)
-    }
-}
-
-// Typography Modifier를 쉽게 적용하기 위한 View 확장
 extension View {
     func typography(_ style: Typography.Style, accent: Bool = false, color: Color = .primary) -> some View {
         self.modifier(TypographyModifier(style: style, accent: accent, color: color))
     }
-    func textStyle(_ style: Typography.Style, accent: Bool = false, color: Color = .primary) -> some View {
-        self.modifier(TextStyleModifier(style: style, accent: accent, color: color))
-    }
 }
-
-
-struct CustomText: View {
-    let text: String
-    let style: Typography.Style
-    let accent: Bool
-    let color: Color
-    
-    @State private var textHeight: CGFloat = 0
-    
-    var body: some View {
-        Text(text)
-            .typography(style, accent: accent, color: color)
-            .fixedSize(horizontal: false, vertical: true)
-            .background(
-                GeometryReader { geometry in
-                    Color.clear.preference(key: TextHeightPreferenceKey.self, value: geometry.size.height)
-                }
-            )
-            .onPreferenceChange(TextHeightPreferenceKey.self) { height in
-                self.textHeight = height
-            }
-            .frame(height: max(textHeight, style.lineHeight))
-    }
-}
-
-struct TextHeightPreferenceKey: PreferenceKey {
-    static var defaultValue: CGFloat = 0
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = max(value, nextValue())
-    }
-}
-
