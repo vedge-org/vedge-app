@@ -1,10 +1,3 @@
-//
-//  TicketDetailView.swift
-//  Vedge
-//
-//  Created by 주현명 on 10/3/24.
-//
-
 import SwiftUI
 import CoreNFC
 
@@ -15,7 +8,7 @@ struct TicketDetailView: View {
     @State private var isNFCAvailable = NFCNDEFReaderSession.readingAvailable
     @State private var nfcMessage: String = "Tap 'Scan NFC' to start."
     
-    var imageName = "Sample3"
+    var imageName:String
     
     var body: some View {
         VStack {
@@ -60,58 +53,56 @@ struct TicketDetailView: View {
                 VStack(alignment: .center, spacing: 0) {
                     HStack(alignment: .center, spacing: 10) {
                         // Title/Accent
-                        Text("YOASOBI ASIA TOUR 2024－2025 LIVE IN KOREA")
+                        Text("YOASOBI ASIA TOUR 2024－2025 LIVE IN KOREA").typography(.title,accent: true,color:Constants.FixedContentsAccent)
                             .lineLimit(2)
-                            .typography(.title,accent: true,color:Constants.FixedContentsAccent)
                     }
                     .padding(16)
-                    .frame(maxWidth: .infinity, alignment: .center)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .background(Constants.BackgroundWhite)
                     .cornerRadius(12)
                     // 리코더 모양 디바이더
                     RecorderView().frame(height: 6)
                                     
                     VStack(alignment: .center, spacing: 10) {
-                        VStack( spacing: 0) {
-                            CustomText(text:"공연 장소",style:.caption, accent: false ,color:Constants.TextBlackNeutral)
-                            CustomText(text:"성남아트센터 콘서트홀",style:.headline,accent: false ,color:Constants.TextBlackDefault)
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text("공연 장소").typography(.caption, accent: false ,color:Constants.TextBlackNeutral)
+                            Text("성남아트센터 콘서트홀").typography(.headline,accent: false ,color:Constants.TextBlackDefault)
                         }
                         .padding(0)
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: .infinity,alignment: .leading)
                         HStack(alignment: .center, spacing: 0) {
-                            VStack(spacing: 0) {
-                                // Caption/Default
-                                CustomText(text:"일자",style:.caption, accent: false ,color:Constants.TextBlackNeutral)
-                                CustomText(text:"24. 09. 30",
-                                           style:.headline,accent: false ,color:Constants.TextBlackDefault)
+                            VStack(alignment: .leading, spacing: 0) {
+                             
+                                Text("일자").typography(.caption, accent: false ,color:Constants.TextBlackNeutral)
+                                Text("24. 09. 30").typography(.headline,accent: false ,color:Constants.TextBlackDefault)
                             }
                             .padding(0)
-                            .frame(maxWidth: .infinity)
-                            VStack(spacing: 0) {
+                            .frame(maxWidth: .infinity,alignment: .topLeading)
+                            VStack(alignment: .leading,spacing: 0) {
                                 // Caption/Default
-                                CustomText(text:"시간",style:.caption, accent: false ,color:Constants.TextBlackNeutral)
-                                CustomText(text:"00시 00분",style:.headline,accent: false ,color:Constants.TextBlackDefault)
+                                Text("시간").typography(.caption, accent: false ,color:Constants.TextBlackNeutral)
+                                Text("00시 00분").typography(.headline,accent: false ,color:Constants.TextBlackDefault)
                             }
                             .padding(0)
-                            .frame(maxWidth: .infinity)
+                            .frame(maxWidth: .infinity,alignment: .topLeading)
                         }
                         .padding(0)
                         .frame(maxWidth: .infinity)
                         HStack(alignment: .center, spacing: 0) {
                             VStack(alignment: .leading, spacing: 0) {
                                 // Caption/Default
-                                CustomText(text:"좌석",style:.caption, accent: false ,color:Constants.TextBlackNeutral)
-                                CustomText(text:"85 D",style:.headline,accent: false ,color:Constants.TextBlackDefault)
+                                Text("좌석").typography(.caption, accent: false ,color:Constants.TextBlackNeutral)
+                                Text("85 D").typography(.headline, accent: false ,color:Constants.TextBlackDefault)
                             }
                             .padding(0)
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                             VStack(alignment: .leading, spacing: 0) {
                                 // Caption/Default
-                                CustomText(text:"주문 번호",style:.caption, accent: false ,color:Constants.TextBlackNeutral)
-                                CustomText(text:"CON-12345",style:.headline,accent: false ,color:Constants.TextBlackDefault)
+                                Text("주문 번호").typography(.caption, accent: false ,color:Constants.TextBlackNeutral)
+                                Text("CON-12345").typography(.headline,accent: false ,color:Constants.TextBlackDefault)
                             }
                             .padding(0)
-                            .frame(maxWidth: .infinity)
+                            .frame(maxWidth: .infinity,alignment: .topLeading)
                         }
                         .padding(0)
                         .frame(maxWidth: .infinity)
@@ -157,5 +148,5 @@ struct TicketDetailView: View {
 }
 
 #Preview {
-    TicketDetailView()
+    TicketDetailView(imageName:"Sample3")
 }
