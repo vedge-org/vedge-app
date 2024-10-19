@@ -12,9 +12,6 @@ struct ContentView: View {
     
     init() {
         UITabBar.appearance().isHidden = true
-        let appearance = UINavigationBar.appearance()
-        appearance.backgroundColor = UIColor.white
-        appearance.barTintColor = UIColor.white
     }
     
     var body: some View {
