@@ -1,6 +1,6 @@
+
 import SwiftUI
 import Lottie
-
 
 struct SlideToUseView: View {
     @EnvironmentObject var nfcManager: NFCSessionManager
@@ -14,7 +14,6 @@ struct SlideToUseView: View {
     let animation = LottieAnimation.named("PhaseCheck")
 
     let keypath = AnimationKeypath(keypath: "**.Color")
-
 
     let maxButtonWidth: CGFloat = UIScreen.main.bounds.width - 40 // 좌우 패딩을 고려하여 조정
     
@@ -32,7 +31,7 @@ struct SlideToUseView: View {
             
             // 텍스트
             Text("밀어서 사용하기")
-                .textStyle(.body, accent: false, color: Constants.TextVariableAlternative)
+                .typography(.body, accent: false, color: Constants.TextVariableAlternative)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .opacity(textOpacity)
             
@@ -42,12 +41,12 @@ struct SlideToUseView: View {
                     LottieView(animation: animation)
                         .playing()
                         .valueProvider(lottieColor, for: keypath)
-                        .animationDidFinish{ _ in
+                        .animationDidFinish { _ in
                             showingNFCView = true
                             nfcManager.startNFCSession()
                         }
-                    
-                } else {
+                }
+                     else {
                     Image("Ticket")
                         .frame(width: 32, height: 32)
                         .foregroundColor(foregroundColor)
