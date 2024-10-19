@@ -7,33 +7,35 @@
 
 import SwiftUI
 
-
 struct ContentView: View {
-   @State private var selectedTab: Tab = .explore
-   
-   init() {
-       UITabBar.appearance().isHidden = true
-   }
+    @State private var selectedTab: Tab = .ticket
+    
+    init() {
+        UITabBar.appearance().isHidden = true
+        let appearance = UINavigationBar.appearance()
+        appearance.backgroundColor = UIColor.white
+        appearance.barTintColor = UIColor.white
+    }
     
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
-                RecommendedView().tag(Tab.recommended)
-                ExploreView().tag(Tab.explore)
-                TicketListView().tag(Tab.ticket)
-                ProfileView().tag(Tab.profile)
+                RecommendedView()
+                    .tag(Tab.recommended)
+                ExploreView()
+                    .tag(Tab.explore)
+                TicketListView()
+                    .tag(Tab.ticket)
+                ProfileView()
+                    .tag(Tab.profile)
             }
             .frame(maxHeight: .infinity)
             
             BottomNavigationBar(selectedTab: $selectedTab)
         }
     }
+    
 }
-
-
-
-
-
 
 #Preview {
     ContentView()
