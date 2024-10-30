@@ -31,3 +31,8 @@ enum Tab: String, CaseIterable {
         }
     }
 }
+
+
+enum Screen {
+    case ticketList, ticketDetail
+}

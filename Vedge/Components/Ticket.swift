@@ -14,23 +14,24 @@ struct Ticket: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            HStack(alignment: .top, spacing: 10) {
+            VStack {
                 Image(imageName)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame( height: 198.5626678466797)
+                    .aspectRatio(16/9, contentMode: .fit) // .fill을 .fit으로 변경
+                    .frame(width: .infinity)
                     .clipped()
-                    .cornerRadius(12)
+                    .cornerRadius(14)
             }
             .padding(4)
-            .frame(maxWidth: .infinity, alignment: .topLeading)
+            .frame(maxWidth: .infinity)
             .background(dominantColor)
             .cornerRadius(16)
             .shadow(color: .black.opacity(0.16), radius: 8, x: 0, y: 8)
             RecorderViewV2(color: dominantColor).frame(height: 6)
             VStack(alignment: .center, spacing: 16) {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("LIVE NATION PRESENTS COLDPLAY : MUSIC OF THE SPHERES DELIVERED BY DHL").typography(.title, accent: true ,color:Constants.VariableContentsAccent)
+                    Text("LIVE NATION PRESENTS COLDPLAY : MUSIC OF THE SPHERES DELIVERED BY DHL")
+                        .typography(.title, accent: true ,color:Constants.VariableContentsAccent)
                         .lineLimit(2)
                     HStack(alignment: .center, spacing: 0) {
                         VStack(alignment: .leading, spacing: 0) {
@@ -40,14 +41,14 @@ struct Ticket: View {
                         }
                         .padding(0)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
-    
+                        
                         VStack(alignment: .leading, spacing: 0) {
                             Text("일자").typography(.caption, accent: false ,color:Constants.VariableContentsAlternative)
                             Text("25. 04. 16").typography(.body, accent: false ,color:Constants.VariableContentsDefault)
                         }
                         .padding(0)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
-        
+                        
                         VStack(alignment: .leading, spacing: 0) {
                             Text("일자").typography(.caption, accent: false ,color:Constants.VariableContentsAlternative)
                             Text("25. 04. 16").typography(.body, accent: false ,color:Constants.VariableContentsDefault)
@@ -65,6 +66,7 @@ struct Ticket: View {
                         .typography(.label,accent: true,color: Constants.FixedContentsAccent)
                         .multilineTextAlignment(.center)
                 }
+                .clipped()
                 .frame(maxWidth: .infinity, minHeight: 52, maxHeight: 52, alignment: .center)
                 .background(Constants.FixedBackgoundWhite)
                 .cornerRadius(8)
@@ -110,7 +112,7 @@ struct RecorderViewV2: View {
             }
             .blendMode(.destinationOut)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity)
         .background(color)
         .padding(.horizontal, 20)
         .compositingGroup()

@@ -12,15 +12,15 @@ struct RecommendedView: View {
     @State private var offset: CGFloat = 0
     
     let columns = [
-           GridItem(.flexible(), spacing: 12),  // 열 사이 간격을 12로 설정
-           GridItem(.flexible(), spacing: 12)
+        GridItem(.flexible(), spacing: 12),  // 열 사이 간격을 12로 설정
+        GridItem(.flexible(), spacing: 12)
     ]
     
     let cards = [
-            CardInfo(text: "요네즈 켄시 2번째\n내한공연 안내", color: Color(red: 0.9, green: 0.4, blue: 0.3)),
-            CardInfo(text: "두 번째 카드", color: .blue),
-            CardInfo(text: "세 번째 카드", color: .green)
-        ]
+        CardInfo(text: "요네즈 켄시 2번째\n내한공연 안내", color: Color(red: 0.9, green: 0.4, blue: 0.3)),
+        CardInfo(text: "두 번째 카드", color: .blue),
+        CardInfo(text: "세 번째 카드", color: .green)
+    ]
     
     let eventItmes = ["Sample","Sample2","Sample3","Sample4","Sample5"]
     
@@ -52,10 +52,15 @@ struct RecommendedView: View {
                                 let predictedEndOffset = -CGFloat(currentPage) * pageWidth + value.predictedEndTranslation.width
                                 let predictedPage = -predictedEndOffset / pageWidth
                                 
-                                withAnimation(.easeOut(duration: 0.3)) {
-                                    if abs(value.translation.width) > pageWidth * 0.3 || abs(value.predictedEndTranslation.width) > pageWidth * 0.3 {
-                                        currentPage = min(max(Int(predictedPage.rounded()), 0), cards.count - 1)
-                                    }
+                                let targetPage: Int
+                                if abs(value.translation.width) > pageWidth * 0.3 || abs(value.predictedEndTranslation.width) > pageWidth * 0.3 {
+                                    targetPage = min(max(Int(predictedPage.rounded()), 0), cards.count - 1)
+                                } else {
+                                    targetPage = currentPage
+                                }
+                                
+                                withAnimation(.interpolatingSpring(stiffness: 300, damping: 30)) {
+                                    currentPage = targetPage
                                     offset = -CGFloat(currentPage) * pageWidth
                                 }
                             }
@@ -120,7 +125,7 @@ struct EventItemView: View {
     let imageName: String
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-              Image(imageName)
+            Image(imageName)
                 .resizable()
                 .frame(height: 232)
                 .clipped()
