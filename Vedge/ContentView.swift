@@ -16,23 +16,22 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            ZStack(alignment: .bottom) {
-                Color.black.ignoresSafeArea()
-                Group {
-                    TabView(selection: $selectedTab) {
-                        RecommendedView()
-                            .tag(Tab.recommended)
-                        ExploreView()
-                            .tag(Tab.explore)
-                        TicketListView()
-                            .tag(Tab.ticket)
-                        ProfileView()
-                            .tag(Tab.profile)
+            NavigationStack {
+                ZStack(alignment: .bottom) {
+                    Color.black.ignoresSafeArea()
+                    Group {
+                        TabView(selection: $selectedTab) {
+                            RecommendedView()
+                                .tag(Tab.recommended)
+                            TicketListView()
+                                .tag(Tab.ticket)
+                            ProfileView()
+                                .tag(Tab.profile)
+                        }
+                        .frame(maxHeight: .infinity)
+                        
+                        BottomNavigationBar(selectedTab: $selectedTab)
                     }
-                    .frame(maxHeight: .infinity)
-                    
-                    
-                    BottomNavigationBar(selectedTab: $selectedTab)
                 }
             }
         }
